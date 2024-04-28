@@ -1,0 +1,47 @@
+// Write simple program using Open source prototype platform like Raspberry-Pi/Beagle  board/Arduino for digital read/write using LED and switch Analog read/write using sensor and  actuators.
+
+
+int ledpin = 13;                      //set pin no of ardinuo to which led is connected  
+void setup() 
+{
+pinMode(ledpin, OUTPUT);            // initialize digital pin LED_BUILTIN as an output.
+}
+
+// the loop function runs over and over again forever
+
+void loop() {
+digitalWrite(ledpin, LOW );    // turn the LED off by making the voltage LOW
+delay(1000);
+digitalWrite(ledpin, HIGH);    // turn the LED ON by making the voltage HIGH
+delay(1000);                
+}
+
+const int PIR_SENSOR_OUTPUT_PIN = 4;	/* PIR sensor O/P pin */
+int warm_up;
+void setup() 
+{
+pinMode(PIR_SENSOR_OUTPUT_PIN, INPUT);
+Serial.begin(9600);	/* Define baud rate for serial communication */
+delay(20000);		/* Power On Warm Up Delay */
+}
+void loop() 
+{
+int sensor_output;
+sensor_output = digitalRead(PIR_SENSOR_OUTPUT_PIN);
+if( sensor_output == LOW )
+{
+if( warm_up == 1 )
+{
+Serial.print("Warming Up\n\n");
+warm_up = 0;
+delay(2000);
+}
+Serial.print("No object in sight\n\n");
+delay(1000);     } 
+else
+{
+Serial.print("Object detected\n\n");    
+warm_up = 1;
+delay(1000);
+}  
+}
