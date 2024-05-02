@@ -17,7 +17,7 @@ void interrupt Timer1_ISR()
 
     if (count >= 1000) //measure upto 1000 ms i.e. 1 seconds
     {
-        Buzzer = ~Buzzer;  	/* Toggle buzzer pin  */
+        Buzzer = ~Buzzer;  	
         count = 0;  //reset count
     }
     TMR1IF = 0; //timer1 overflow flag to 0
