@@ -1,6 +1,6 @@
 // Write an Embedded C program to interface PIC 18FXXX with LED & blinking it using specified delay. 
 
-#include <p18f4550.h>
+#include <pic18f4550.h>
 
 void delay(unsigned int time)
 {
